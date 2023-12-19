@@ -141,6 +141,7 @@ export default function Home() {
             desc="I am Dr. Fraol Zeleke, a neurology trailblazer. My groundbreaking diagnostic tool,
         patient-centric care, and commitment to mentorship define my legacy,
         recognized through accolades and a lasting impact on healthcare."
+            signature="Fraol Z."
           />
         </div>
         <div id="content-2" className="flex">
@@ -151,6 +152,7 @@ export default function Home() {
           <TextContainer
             heading="Education"
             desc="Dr. Fraol Zeleke excelled at the esteemed Aetherius Medical Academy, earning a Bachelor's in Neuroscience and later achieving a Master's and Ph.D. in Neurology. This imaginary institution shaped his commitment to patient-centric care and mentorship, laying the groundwork for his groundbreaking contributions to the field."
+            signature="Fraol Z."
           />
         </div>
         <div id="content-3" className="flex">
@@ -161,6 +163,7 @@ export default function Home() {
           <TextContainer
             heading="Experience"
             desc="With a distinguished career, Dr. Fraol Zeleke has pioneered advancements in neurology. His research led to a groundbreaking diagnostic tool for neurological disorders. Beyond his achievements, his empathetic patient care and mentorship have inspired future healthcare professionals. Recognized with awards, Dr. Zeleke continues to shape the landscape of medical science."
+            signature="Fraol Z."
           />
         </div>
         <div id="content-4" className="flex">
@@ -173,6 +176,7 @@ export default function Home() {
             desc="Let’s get in touch. You can find me through on one of the listed contact information."
             phone={"251912345678"}
             email="contact@fraol.me"
+            signature="Fraol Z."
           />
         </div>
       </motion.div>
