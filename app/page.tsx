@@ -1,6 +1,8 @@
 "use client"
 
-import ImageContainer from "./components/ImageContainer"
+import ImageContainer from "@/app/components/ImageContainer"
+import TextContainer from "@/app/components/TextContainer"
+import ContactContainer from "@/app/components/ContactContainer"
 
 // Import image assets
 
@@ -12,8 +14,6 @@ import homepageImageMd from "@/public/homePage-md.png"
 import educationImageMd from "@/public/educationPage-md.png"
 import experienceImageMd from "@/public/experiencePage-md.png"
 import contactImageMd from "@/public/contactPage-md.png"
-
-import TextContainer from "@/app/components/TextContainer"
 
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
@@ -118,9 +118,11 @@ export default function Home() {
             img_src={screenHeight < 768 ? contactImageMd : contactImageLg}
             img_alt={"Woman writing on a piece of paper"}
           />
-          <TextContainer
+          <ContactContainer
             heading="Contact"
             desc="Let’s get in touch. You find me through one the listed contact information."
+            phone={"251912345678"}
+            email="contact@fraol.me"
           />
         </div>
       </motion.div>
