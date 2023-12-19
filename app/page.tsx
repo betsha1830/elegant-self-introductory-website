@@ -15,23 +15,70 @@ import educationImageMd from "@/public/educationPage-md.png"
 import experienceImageMd from "@/public/experiencePage-md.png"
 import contactImageMd from "@/public/contactPage-md.png"
 
-import { motion } from "framer-motion"
+// Import icon assets
+
+import downArrow from "@/public/downArrow.svg"
+
+import { motion, spring } from "framer-motion"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 export default function Home() {
   const [y, setY] = useState<number>(0)
   const [screenHeight, setScreenHeight] = useState<number>(768)
-  const [currPage, setCurrPage] = useState(1)
+  const [currPage, setCurrPage] = useState<number>(1)
 
   let page_counter = 1
 
   useEffect(() => {
-    typeof window !== undefined ? setScreenHeight(window.innerHeight) : ""
+    if (typeof window !== undefined) {
+      setScreenHeight(window.innerHeight)
+      window.addEventListener("", () => {
+        setCurrPage(currPage + 1)
+        nextPage(currPage)
+      })
+    }
   }, [])
+
+  function scroll(e: WheelEvent) {
+    if (e.deltaY > 50) {
+      setTimeout(() => {
+        nextPage(currPage + 1)
+      }, 300)
+      console.log(e.deltaY)
+    } else if (e.deltaY < -50) {
+      setTimeout(() => {
+        previousPage(currPage - 1)
+      }, 300)
+      console.log(e.deltaY)
+    }
+  }
 
   function nextPage(n: number) {
     // y <= -300 ? setY(0) : setY(y - 100)
-    if (n !== currPage) {
+    if (n !== currPage && n < 5) {
+      document.getElementById(`button-${n}`)?.classList.remove("bg-white")
+      document.getElementById(`button-${n}`)?.classList.add("bg-wood")
+      document.getElementById(`button-${currPage}`)?.classList.remove("bg-wood")
+      document.getElementById(`button-${currPage}`)?.classList.add("bg-white")
+      setCurrPage(n)
+      if (n === 1) {
+        setY(0)
+      }
+      if (n === 2) {
+        setY(-100)
+      }
+      if (n === 3) {
+        setY(-200)
+      }
+      if (n === 4) {
+        setY(-300)
+      }
+    }
+  }
+
+  function previousPage(n: number) {
+    if (n !== currPage && n > 0) {
       document.getElementById(`button-${n}`)?.classList.remove("bg-white")
       document.getElementById(`button-${n}`)?.classList.add("bg-wood")
       document.getElementById(`button-${currPage}`)?.classList.remove("bg-wood")
@@ -53,7 +100,10 @@ export default function Home() {
   }
 
   return (
-    <div className="w-screen h-screen flex flex-col overflow-hidden">
+    <div
+      onWheel={(e) => scroll(e)}
+      className="w-screen h-screen flex flex-col overflow-hidden"
+    >
       <div className="absolute z-10 h-screen pl-5 flex flex-col justify-center gap-5">
         <button
           id="button-1"
@@ -120,12 +170,30 @@ export default function Home() {
           />
           <ContactContainer
             heading="Contact"
-            desc="Let’s get in touch. You find me through one the listed contact information."
+            desc="Let’s get in touch. You can find me through on one of the listed contact information."
             phone={"251912345678"}
             email="contact@fraol.me"
           />
         </div>
       </motion.div>
+      <div className="absolute bottom-0 flex justify-center w-screen">
+        <motion.button
+          onClick={() => nextPage(currPage + 1)}
+          initial={{ y: -8 }}
+          animate={{ y: -25 }}
+          exit={{ y: -8 }}
+          whileHover={{}}
+          transition={{
+            type: spring,
+            repeatType: "reverse",
+            repeat: Infinity,
+            duration: 1,
+          }}
+          className="w-12 h-12 rounded-[50%] bg-gray-100"
+        >
+          <Image src={downArrow} alt="down arrow" />
+        </motion.button>
+      </div>
     </div>
   )
 }
