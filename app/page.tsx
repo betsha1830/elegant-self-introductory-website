@@ -20,7 +20,7 @@ import contactImageMd from "@/public/contactPage-md.png"
 import downArrow from "@/public/downArrow.svg"
 
 import { motion, spring } from "framer-motion"
-import { useEffect, useState } from "react"
+import { WheelEvent, useEffect, useState } from "react"
 import Image from "next/image"
 
 export default function Home() {
