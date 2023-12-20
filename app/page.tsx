@@ -122,12 +122,11 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div onWheel={scroll}>
       <button
         id="focus"
         className="absolute hover:cursor-default top-0 left-0 z-100 w-screen h-screen bg-white"
         onKeyDown={navigate}
-        onWheel={scroll}
       />
       <div className="w-screen h-screen flex flex-col overflow-hidden">
         <div className="absolute z-10 h-screen pl-5 flex flex-col justify-center gap-5">
@@ -159,13 +158,7 @@ export default function Home() {
         >
           <div id="content-1" className="flex">
             <ImageContainer
-              img_src={
-                screenHeight < 768
-                  ? homePageImageMd
-                  : screenHeight < 950
-                  ? homePageImageXl
-                  : homePageImageLg
-              }
+              img_src={screenHeight < 768 ? homePageImageMd : homePageImageLg}
               img_alt={"Woman slightly smiling and looking at camera"}
             />
             <TextContainer
@@ -178,13 +171,7 @@ export default function Home() {
           </div>
           <div id="content-2" className="flex">
             <ImageContainer
-              img_src={
-                screenHeight < 768
-                  ? educationImageMd
-                  : screenHeight < 950
-                  ? educationImageLg
-                  : educationImageXl
-              }
+              img_src={screenHeight < 768 ? educationImageMd : educationImageLg}
               img_alt={"Woman writing on a piece of paper"}
             />
             <TextContainer
@@ -196,11 +183,7 @@ export default function Home() {
           <div id="content-3" className="flex">
             <ImageContainer
               img_src={
-                screenHeight < 768
-                  ? experienceImageMd
-                  : screenHeight < 950
-                  ? experienceImageLg
-                  : experienceImageXl
+                screenHeight < 768 ? experienceImageMd : experienceImageLg
               }
               img_alt={"Woman writing on a piece of paper"}
             />
@@ -212,13 +195,7 @@ export default function Home() {
           </div>
           <div id="content-4" className="flex">
             <ImageContainer
-              img_src={
-                screenHeight < 768
-                  ? contactImageMd
-                  : screenHeight < 950
-                  ? contactImageLg
-                  : contactImageXl
-              }
+              img_src={screenHeight < 768 ? contactImageMd : contactImageLg}
               img_alt={"Woman writing on a piece of paper"}
             />
             <ContactContainer
