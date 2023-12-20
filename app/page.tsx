@@ -14,10 +14,6 @@ import homePageImageMd from "@/public/homePage-md.png"
 import educationImageMd from "@/public/educationPage-md.png"
 import experienceImageMd from "@/public/experiencePage-md.png"
 import contactImageMd from "@/public/contactPage-md.png"
-import homePageImageXl from "@/public/homePage-xl.png"
-import educationImageXl from "@/public/educationPage-xl.png"
-import experienceImageXl from "@/public/experiencePage-xl.png"
-import contactImageXl from "@/public/contactPage-xl.png"
 
 // Import icon assets
 
@@ -29,7 +25,7 @@ import Image from "next/image"
 
 export default function Home() {
   const [y, setY] = useState<number>(0)
-  const [screenHeight, setScreenHeight] = useState<number>(768)
+  const [screenWidth, setScreenWidth] = useState<number>(768)
   const [currPage, setCurrPage] = useState<number>(1)
 
   //  Checks screen size and sets the appropriate image
@@ -38,8 +34,9 @@ export default function Home() {
     //  Calculate the browser height to use proper image
 
     if (typeof window !== undefined) {
-      setScreenHeight(window.innerHeight)
-      console.log(screenHeight)
+      const width = window.innerWidth
+      setScreenWidth(width)
+      console.log(width)
       document.getElementById("focus")?.focus()
     }
   }, [])
@@ -158,7 +155,7 @@ export default function Home() {
         >
           <div id="content-1" className="flex">
             <ImageContainer
-              img_src={screenHeight < 768 ? homePageImageMd : homePageImageLg}
+              img_src={screenWidth < 1367 ? homePageImageMd : homePageImageLg}
               img_alt={"Woman slightly smiling and looking at camera"}
             />
             <TextContainer
@@ -171,7 +168,7 @@ export default function Home() {
           </div>
           <div id="content-2" className="flex">
             <ImageContainer
-              img_src={screenHeight < 768 ? educationImageMd : educationImageLg}
+              img_src={screenWidth < 1367 ? educationImageMd : educationImageLg}
               img_alt={"Woman writing on a piece of paper"}
             />
             <TextContainer
@@ -183,7 +180,7 @@ export default function Home() {
           <div id="content-3" className="flex">
             <ImageContainer
               img_src={
-                screenHeight < 768 ? experienceImageMd : experienceImageLg
+                screenWidth < 1367 ? experienceImageMd : experienceImageLg
               }
               img_alt={"Woman writing on a piece of paper"}
             />
@@ -195,7 +192,7 @@ export default function Home() {
           </div>
           <div id="content-4" className="flex">
             <ImageContainer
-              img_src={screenHeight < 768 ? contactImageMd : contactImageLg}
+              img_src={screenWidth < 1367 ? contactImageMd : contactImageLg}
               img_alt={"Woman writing on a piece of paper"}
             />
             <ContactContainer
@@ -220,7 +217,7 @@ export default function Home() {
               repeat: Infinity,
               duration: 1,
             }}
-            className="w-12 h-12 rounded-[50%] bg-gray-100"
+            className="w-12 h-12 rounded-[50%] bg-gray-100 text-wood"
           >
             <Image src={downArrow} alt="down arrow" />
           </motion.button>
