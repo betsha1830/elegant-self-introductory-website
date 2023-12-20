@@ -56,12 +56,12 @@ export default function ContactContainer({
         <div className={"desc font-desc text-3xl " + cormorant.className}>
           {desc}
         </div>
-        <div className={"desc font-desc" + cormorant.className}>
+        <div className={"desc font-desc " + cormorant.className}>
           <div className="flex mt-8 items-center gap-x-5 text-3xl">
             <Image src={phoneIcon} alt="phone icon" />+{phone}
           </div>
         </div>
-        <div className={"desc font-desc" + cormorant.className}>
+        <div className={"desc font-desc " + cormorant.className}>
           <div className="flex mt-8 items-center gap-x-5 text-3xl">
             <Image src={emailIcon} alt="email icon" />
             {email}

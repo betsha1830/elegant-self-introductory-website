@@ -6,14 +6,18 @@ import ContactContainer from "@/app/components/ContactContainer"
 
 // Import image assets
 
-import homepageImageLg from "@/public/homePage-lg.png"
+import homePageImageLg from "@/public/homePage-lg.png"
 import educationImageLg from "@/public/educationPage-lg.png"
 import experienceImageLg from "@/public/experiencePage-lg.png"
-import contactImageLg from "@/public/conatctPage-lg.png"
-import homepageImageMd from "@/public/homePage-md.png"
+import contactImageLg from "@/public/contactPage-lg.png"
+import homePageImageMd from "@/public/homePage-md.png"
 import educationImageMd from "@/public/educationPage-md.png"
 import experienceImageMd from "@/public/experiencePage-md.png"
 import contactImageMd from "@/public/contactPage-md.png"
+import homePageImageXl from "@/public/homePage-xl.png"
+import educationImageXl from "@/public/educationPage-xl.png"
+import experienceImageXl from "@/public/experiencePage-xl.png"
+import contactImageXl from "@/public/contactPage-xl.png"
 
 // Import icon assets
 
@@ -35,6 +39,7 @@ export default function Home() {
 
     if (typeof window !== undefined) {
       setScreenHeight(window.innerHeight)
+      console.log(screenHeight)
       document.getElementById("focus")?.focus()
     }
   }, [])
@@ -117,12 +122,13 @@ export default function Home() {
   }
 
   return (
-    <button
-      id="focus"
-      className="absolute hover:cursor-default top-0 left-0 z-100 w-screen h-screen bg-white"
-      onKeyDown={navigate}
-      onWheel={scroll}
-    >
+    <div>
+      <button
+        id="focus"
+        className="absolute hover:cursor-default top-0 left-0 z-100 w-screen h-screen bg-white"
+        onKeyDown={navigate}
+        onWheel={scroll}
+      />
       <div className="w-screen h-screen flex flex-col overflow-hidden">
         <div className="absolute z-10 h-screen pl-5 flex flex-col justify-center gap-5">
           <button
@@ -153,7 +159,13 @@ export default function Home() {
         >
           <div id="content-1" className="flex">
             <ImageContainer
-              img_src={screenHeight < 768 ? homepageImageMd : homepageImageLg}
+              img_src={
+                screenHeight < 768
+                  ? homePageImageMd
+                  : screenHeight < 950
+                  ? homePageImageXl
+                  : homePageImageLg
+              }
               img_alt={"Woman slightly smiling and looking at camera"}
             />
             <TextContainer
@@ -166,7 +178,13 @@ export default function Home() {
           </div>
           <div id="content-2" className="flex">
             <ImageContainer
-              img_src={screenHeight < 768 ? educationImageMd : educationImageLg}
+              img_src={
+                screenHeight < 768
+                  ? educationImageMd
+                  : screenHeight < 950
+                  ? educationImageLg
+                  : educationImageXl
+              }
               img_alt={"Woman writing on a piece of paper"}
             />
             <TextContainer
@@ -178,7 +196,11 @@ export default function Home() {
           <div id="content-3" className="flex">
             <ImageContainer
               img_src={
-                screenHeight < 768 ? experienceImageMd : experienceImageLg
+                screenHeight < 768
+                  ? experienceImageMd
+                  : screenHeight < 950
+                  ? experienceImageLg
+                  : experienceImageXl
               }
               img_alt={"Woman writing on a piece of paper"}
             />
@@ -190,7 +212,13 @@ export default function Home() {
           </div>
           <div id="content-4" className="flex">
             <ImageContainer
-              img_src={screenHeight < 768 ? contactImageMd : contactImageLg}
+              img_src={
+                screenHeight < 768
+                  ? contactImageMd
+                  : screenHeight < 950
+                  ? contactImageLg
+                  : contactImageXl
+              }
               img_alt={"Woman writing on a piece of paper"}
             />
             <ContactContainer
@@ -221,6 +249,6 @@ export default function Home() {
           </motion.button>
         </div>
       </div>
-    </button>
+    </div>
   )
 }
