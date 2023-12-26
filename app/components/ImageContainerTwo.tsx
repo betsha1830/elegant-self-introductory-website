@@ -10,9 +10,13 @@ export default function ImageContainerTwo({
   img_src,
 }: ImageContainerTwoProps) {
   return (
-    <div className="image-container-two rounded-md w-1/2">
-      <div className="">
-        <Image src={img_src} alt={img_alt} />
+    <div className="image-container-two flex justify-center items-center rounded-md h-screen">
+      <div className="shadow-cust">
+        <Image
+          className="rounded-md h-[80vh] w-[30vw]"
+          src={img_src}
+          alt={img_alt}
+        />
       </div>
     </div>
   )
