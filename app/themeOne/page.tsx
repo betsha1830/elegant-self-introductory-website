@@ -182,7 +182,7 @@ export default function ThemeOne() {
               img_src={
                 screenWidth < 1367 ? experienceImageMd : experienceImageLg
               }
-              img_alt={"Woman writing on a piece of paper"}
+              img_alt={"Woman diagnosing a patient"}
             />
             <TextContainer
               heading="Experience"
@@ -193,7 +193,7 @@ export default function ThemeOne() {
           <div id="content-4" className="flex">
             <ImageContainer
               img_src={screenWidth < 1367 ? contactImageMd : contactImageLg}
-              img_alt={"Woman writing on a piece of paper"}
+              img_alt={"Woman talking on phone"}
             />
             <ContactContainer
               heading="Contact"
