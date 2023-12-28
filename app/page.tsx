@@ -34,6 +34,7 @@ export default function Page() {
   const [isMobile, setIsMobile] = useState<boolean>(false)
   const [y, setY] = useState<number>(0)
   const [currPage, setCurrPage] = useState<number>(1)
+  const [initTouch, setInitTouch] = useState<number>(0)
 
   useEffect(() => {
     const width = window.innerWidth
@@ -43,16 +44,16 @@ export default function Page() {
   //  Navigation using the arrow keys
 
   function navigate(e: TouchEvent) {
-    console.log(e.changedTouches)
-    // if (e.key === "ArrowDown") {
-    //   setTimeout(() => {
-    //     nextPage(currPage + 1)
-    //   }, 300)
-    // } else if (e.key === "ArrowUp") {
-    //   setTimeout(() => {
-    //     previousPage(currPage - 1)
-    //   }, 300)
-    // }
+    const deltaTouch = e.touches[0].clientY - initTouch
+    if (deltaTouch < 10) {
+      setTimeout(() => {
+        nextPage(currPage + 1)
+      }, 300)
+    } else if (deltaTouch > 10) {
+      setTimeout(() => {
+        previousPage(currPage - 1)
+      }, 300)
+    }
   }
 
   function nextPage(n: number) {
@@ -110,7 +111,13 @@ export default function Page() {
     <div>
       {isMobile ? (
         <div
+          onTouchStart={(e) => {
+            setInitTouch(e.touches[0].clientY)
+          }}
           onTouchMove={navigate}
+          onTouchEnd={() => {
+            setInitTouch(0)
+          }}
           className="mobile w-screen h-screen overflow-hidden flex flex-col"
         >
           <motion.div
