@@ -14,15 +14,16 @@ import downArrow from "@/public/downArrow.svg"
 import Link from "next/link"
 import Image from "next/image"
 import { TouchEvent, useEffect, useState } from "react"
+import { motion, spring } from "framer-motion"
 
 //  Import custom components
 
-import { motion, spring } from "framer-motion"
+import MobileContent from "./components/MobileContent"
+import MobileContactContent from "./components/MobileContactContent"
 
 //  Import fonts
 
 import { Crimson_Text } from "next/font/google"
-import MobileContent from "./components/MobileContent"
 
 const crimson_text = Crimson_Text({
   subsets: ["latin"],
@@ -151,11 +152,13 @@ export default function Page() {
               />
             </div>
             <div className="content-4">
-              <MobileContent
+              <MobileContactContent
                 img_src={contactImageMob}
                 img_alt="Woman talking on phone"
                 desc="Let’s get in touch. You can find me through on one of the listed contact information."
                 header="Contact"
+                phone="251912345678"
+                email="contact@fraol.me"
               />
             </div>
           </motion.div>
