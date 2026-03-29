@@ -122,7 +122,7 @@ export default function ThemeOne() {
     <div onWheel={scroll}>
       <button
         id="focus"
-        className="absolute hover:cursor-default top-0 left-0 z-100 w-screen h-screen bg-white"
+        className="absolute hover:cursor-default top-0 left-0 z-100 w-screen h-screen"
         onKeyDown={navigate}
       />
       <div className="w-screen h-screen flex flex-col overflow-hidden">
